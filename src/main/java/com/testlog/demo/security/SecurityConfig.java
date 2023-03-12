@@ -56,13 +56,7 @@ public UserDetailsService  userDetailService(){
         .anyRequest()
         .authenticated()
         .and()
-        .formLogin((form) -> form
-				.loginPage("/login")
-				.permitAll()
-			)
-			.logout((logout) -> logout.permitAll());
-
-
+        .formLogin();
 return httpSecurity.build();
    
 
