@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.stereotype.Service;
 
 
 @Configuration
@@ -23,10 +24,7 @@ public PasswordEncoder  passwordEncoder(){
 }
 
 
-
 @Bean
-
-
 public UserDetailsService  userDetailService(){
     UserDetails normalUser = User
     .withUsername("user")

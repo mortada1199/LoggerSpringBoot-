@@ -7,12 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/home")
 public class HomeController {
-    
-        @PostMapping("/login")
-        public void login(){
-                NarmalUser();
-        }
-
 
 @GetMapping("/normal")
 public ResponseEntity<String> NarmalUser(){
