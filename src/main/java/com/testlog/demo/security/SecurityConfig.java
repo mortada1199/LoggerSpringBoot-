@@ -15,6 +15,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig   {
 @Bean
 public PasswordEncoder  passwordEncoder(){
@@ -24,21 +25,20 @@ public PasswordEncoder  passwordEncoder(){
 
 
 @Bean
-public UserDetailsService  userDetailService(){
 
+
+public UserDetailsService  userDetailService(){
     UserDetails normalUser = User
     .withUsername("user")
     .password(passwordEncoder().encode("password"))
     .roles("NORMAL")
     .build();
-
     UserDetails adminUser = User
     .withUsername("admin")
     .password(passwordEncoder().encode("password"))
     .roles("ADMIN")
     .build();
     return new InMemoryUserDetailsManager(normalUser,adminUser);
-
 }
 
 
@@ -58,7 +58,12 @@ public UserDetailsService  userDetailService(){
         .anyRequest()
         .authenticated()
         .and()
-        .formLogin();
+        .formLogin((form) -> form
+				.loginPage("/login")
+				.permitAll()
+			)
+			.logout((logout) -> logout.permitAll());
+
 
 return httpSecurity.build();
    

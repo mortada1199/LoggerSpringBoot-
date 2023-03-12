@@ -1,6 +1,5 @@
 package com.testlog.demo.models;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,12 +15,16 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class UserModel {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private long id;
 
     private String name;
 
+    private String email;
+
+    private String password;
+    
     private String type; 
 }
