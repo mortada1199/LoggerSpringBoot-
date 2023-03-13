@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <title>Login Page</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="color: red">User Login Form</h1>
+      <form th:action="@{/userLogin}" th:object="${user}" method="post" class="col-5">
+        <label><h6>UserId</h6></label>
+        <input type="text" class="form-control"  th:field="*{userId}"/>
+        <label><h6>Password</h6></label>
+        <input type="password" class="form-control" th:field="*{userId}"/>
+        <br />
+        <button type="submit" class="btn btn-success">Login</button>
+      </form>
+    </div>
+  </body>
+</html>

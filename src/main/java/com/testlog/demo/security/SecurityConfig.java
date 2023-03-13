@@ -22,20 +22,20 @@ public PasswordEncoder  passwordEncoder(){
 }
 
 
-@Bean
-public UserDetailsService  userDetailService(){
-    UserDetails normalUser = User
-    .withUsername("user")
-    .password(passwordEncoder().encode("password"))
-    .roles("NORMAL")
-    .build();
-    UserDetails adminUser = User
-    .withUsername("admin")
-    .password(passwordEncoder().encode("password"))
-    .roles("ADMIN")
-    .build();
-    return new InMemoryUserDetailsManager(normalUser,adminUser);
-}
+// @Bean
+// public UserDetailsService  userDetailService(){
+//     UserDetails normalUser = User
+//     .withUsername("user")
+//     .password(passwordEncoder().encode("password"))
+//     .roles("NORMAL")
+//     .build();
+//     UserDetails adminUser = User
+//     .withUsername("admin")
+//     .password(passwordEncoder().encode("password"))
+//     .roles("ADMIN")
+//     .build();
+//     return new InMemoryUserDetailsManager(normalUser,adminUser);
+// }
 
 
     
@@ -49,7 +49,7 @@ public UserDetailsService  userDetailService(){
         .hasRole("NORMAL")
         .requestMatchers("/home/admin")
         .hasRole("ADMIN")
-        .requestMatchers("/home/user")
+        .requestMatchers("/api/user/login")
         .permitAll()
         .anyRequest()
         .authenticated()
