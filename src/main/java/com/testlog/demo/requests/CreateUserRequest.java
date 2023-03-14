@@ -1,5 +1,6 @@
 package com.testlog.demo.requests;
 
+import com.testlog.demo.models.UserType;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +16,8 @@ public class CreateUserRequest {
 
     @NotNull
     private String type;
+    @NotNull
+    private UserType userType;
     @NotNull
     private String email;
     @NotNull
