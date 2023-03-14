@@ -40,8 +40,8 @@ public class UserController {
         }
     }
 
-    @PostMapping(name = "/login")
-    public @ResponseBody ResponseEntity<?> login(@RequestBody @Valid CreateUserRequest input) {
+    @PostMapping(path = "/login")
+    public @ResponseBody ResponseEntity<?> loginByUserName(@RequestBody  CreateUserRequest input) {
         UserDetails userDetails=customUserDetailService.loadUserByUsername(input.getName());
         if(userDetails !=null){
 

@@ -1,5 +1,7 @@
 package com.testlog.demo.security;
 
+import java.util.UUID;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFilter;
 
 
 @Configuration
@@ -45,16 +48,18 @@ public PasswordEncoder  passwordEncoder(){
 
         httpSecurity.csrf().disable()
         .authorizeHttpRequests()
-        .requestMatchers("/home/normal")
-        .hasRole("NORMAL")
-        .requestMatchers("/home/admin")
-        .hasRole("ADMIN")
+        // .requestMatchers("/home/normal")
+        // .hasRole("NORMAL")
+        // .requestMatchers("/home/admin")
+        // .hasRole("ADMIN")
         .requestMatchers("/api/user/login")
         .permitAll()
         .anyRequest()
         .authenticated()
         .and()
         .formLogin();
+
+    
 return httpSecurity.build();
    
 

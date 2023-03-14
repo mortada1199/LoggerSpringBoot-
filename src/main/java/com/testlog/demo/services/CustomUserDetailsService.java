@@ -1,16 +1,19 @@
 package com.testlog.demo.services;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.testlog.demo.Repo.UserRepo;
 import com.testlog.demo.models.User;
-
+@Service
     public class CustomUserDetailsService implements UserDetailsService {
       @Autowired
       private UserRepo userRepo;
@@ -26,6 +29,8 @@ import com.testlog.demo.models.User;
             builder = org.springframework.security.core.userdetails.User.withUsername(username);
             builder.password(new BCryptPasswordEncoder().encode(user.getPassword()));
             builder.roles("ADMIN");
+            
+            
           } else {
             throw new UsernameNotFoundException("User not found.");
           }
