@@ -29,8 +29,6 @@ import com.testlog.demo.models.User;
             builder = org.springframework.security.core.userdetails.User.withUsername(username);
             builder.password(new BCryptPasswordEncoder().encode(user.getPassword()));
             builder.roles("ADMIN");
-            
-            
           } else {
             throw new UsernameNotFoundException("User not found.");
           }
