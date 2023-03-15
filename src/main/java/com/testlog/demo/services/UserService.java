@@ -30,7 +30,7 @@ public class UserService {
         }
 
         
-        User user = new User(0, userRequest.getName(), userRequest.getType(),userRequest.getEmail(),userRequest.getPassword());
+        User user = new User(0, userRequest.getName(), userRequest.getType(),userRequest.getEmail(),userRequest.getUserType(),userRequest.getPassword());
         User result = userRepo.save(user);
         return result;
     }
